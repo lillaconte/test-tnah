@@ -2,12 +2,14 @@ from datetime import date
 
 import pytest
 
-# from src.models.person import Person
+from src.models.person import Person
 
 
 def test_is_adult(adult, minor):
     """Test that the is_adult static method works as expected"""
     # TODO: Test both adult and minor ages with Person.is_adult()
+    assert adult.is_adult()
+    assert not minor.is_adult()
 
 
 def test_sort_by_age(person_list):
@@ -20,12 +22,14 @@ def test_sort_by_age(person_list):
     [
         ("", "Dupont", date(1990, 1, 1), "Paris"),  # Empty firstname
         ("Alice", "", date(1990, 1, 1), "Paris"),  # Empty name
-        ("Alice", "Dupont", date(2025, 1, 1), "Paris"),  # Future date
+        ("Alice", "Dupont", date(2032, 1, 1), "Paris"),  # Future date
     ],
 )
 def test_invalid_person_initialization(firstname, name, birth, city):
     """Test that invalid data raises a ValueError."""
     # TODO: Test that initializing a Person with invalid data raises ValueError
+    with pytest.raises(ValueError):
+        Person(firstname, name, birth, city)
 
 
 def test_str_representation(adult):

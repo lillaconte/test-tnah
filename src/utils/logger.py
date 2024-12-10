@@ -8,7 +8,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any, Iterable, Optional, Union
 
-from tqdm import tqdm
+#from tqdm import tqdm
 
 
 def strip_tags(html: str) -> str:
@@ -252,7 +252,7 @@ class Logger:
     @staticmethod
     def progress(
         iterable: Iterable, desc: str = "", total: Optional[int] = None
-    ) -> tqdm:
+    ):
         """
         Create a progress bar for an iteration
 
@@ -263,8 +263,7 @@ class Logger:
 
         Returns:
             tqdm: Progress bar object
-        """
-        return tqdm(
+            return tqdm(
             iterable,
             desc=desc,
             total=total,
@@ -272,6 +271,8 @@ class Logger:
             ncols=80,
             bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]",
         )
+        """
+        return
 
 
 # Create a global logger instance
